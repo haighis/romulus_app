@@ -1,4 +1,7 @@
 # ![RealWorld Example App](logo.png)
+
+add prometheus. see master elixir chp
+
 > Elixir (Phoenix) codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.  
 
 [![CircleCI](https://circleci.com/gh/gothinkster/elixir-phoenix-realworld-example-app.svg?style=svg)](https://circleci.com/gh/gothinkster/elixir-phoenix-realworld-example-app) [![codecov](https://codecov.io/gh/gothinkster/elixir-phoenix-realworld-example-app/branch/master/graph/badge.svg)](https://codecov.io/gh/gothinkster/elixir-phoenix-realworld-example-app)
@@ -49,10 +52,34 @@ mix docs
 
 This will generate a `doc/` directory with a documentation in HTML. To view the documentation, open the `index.html` file in the generated directory.
 
-## Style guide
+### Ecto Docs
 
-This project uses [mix format](https://hexdocs.pm/mix/master/Mix.Tasks.Format.html). You can find the configuration file for the formatter in the `.formatter.exs` file.
+https://hexdocs.pm/ecto/Ecto.html
 
-## Licensing
+### Stop postgresql
 
-MIT © Ezinwa Okpoechi
+ brew services stop postgresql
+
+### Start postgresql in docker
+
+docker run --name some-postgres -p 5432:5432 -v postgres-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postgres -d postgres
+
+### Help with Docker & Postgres
+
+https://markheath.net/post/exploring-postgresql-with-docker
+
+### Working with a repo
+
+mix ecto.create -r Cards.Repo
+
+mix ecto.migrate -r Cards.Repo
+
+mix ecto.drop -r Cards.Repo
+
+Insert some sample data before write our api resource
+
+Cards.Repo.insert!(%Cards.Schemas.Card{label: "Hello1"})
+
+Seeding data
+
+https://www.phoenixframework.org/blog/seeding-data

@@ -7,7 +7,7 @@ defmodule RealWorld.Mixfile do
       version: "1.0.0",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(), # ++ [:phoenix_swagger]
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -26,7 +26,7 @@ defmodule RealWorld.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {RealWorld.Application, []}, extra_applications: [:logger, :runtime_tools, :comeonin]]
+    [mod: {RealWorld.Application, []}, extra_applications: [:logger, :runtime_tools, :comeonin, :cards]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,6 +36,8 @@ defmodule RealWorld.Mixfile do
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
+  # 
+  # https://hexdocs.pm/mix/Mix.Tasks.Deps.html
   defp deps do
     [
       {:phoenix, "~> 1.3.0"},
@@ -53,7 +55,11 @@ defmodule RealWorld.Mixfile do
       {:ex_machina, "~> 2.0", only: :test},
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
       {:plug, "~> 1.0"},
-      {:corsica, "~> 1.0"}
+      #{:cards, "~> 0.0.1"}, Hex
+      #{:cards, git: "https://github.com/nubunto/ecto_repo_test.git", branch: "master"},  Github
+      {:cards, path: "../cards"}, # Local path
+      {:corsica, "~> 1.0"} #,
+      #{:phoenix_swagger, "~> 0.8"}
     ]
   end
 

@@ -11,6 +11,8 @@ defmodule RealWorld.Application do
     children = [
       # Start the Ecto repository
       supervisor(RealWorld.Repo, []),
+      supervisor(Forms.Repo2, []),
+      
       # Start the endpoint when the application starts
       supervisor(RealWorldWeb.Endpoint, [])
       # Start your own worker by calling: RealWorld.Worker.start_link(arg1, arg2, arg3)

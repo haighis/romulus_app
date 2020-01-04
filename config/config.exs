@@ -8,12 +8,29 @@ use Mix.Config
 # General application configuration
 config :real_world, ecto_repos: [RealWorld.Repo]
 
+config :real_world, ecto_repos: [Forms.Repo2]
+
+config :cards, ecto_repos: [Cards.Repo]
+
+
+#config :real_world, ecto_repos: [RealWorld.Repo2]
+
+#config :john, ecto_repos: [Forms.Repo]
+
 # Configures the endpoint
 config :real_world, RealWorldWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "9ueg5YcX8/LKzVUcDrXp5xpYuaBCUfZZAJ3/udC1LCoabotR3O1CJyf/u/6RLJ/N",
   render_errors: [view: RealWorldWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: RealWorld.PubSub, adapter: Phoenix.PubSub.PG2]
+
+# config :real_world, :phoenix_swagger,
+#   swagger_files: %{
+#     "priv/static/swagger.json" => [
+#       router: MyAppWeb.Router,     # phoenix routes will be converted to swagger paths
+#       endpoint: MyAppWeb.Endpoint  # (optional) endpoint config used to set host, port and https schemes.
+#     ]
+#   }
 
 # Configures Elixir's Logger
 config :logger, :console,
