@@ -19,6 +19,8 @@ mix ecto.create  # creates the database.
 mix ecto.migrate  # run the database migrations.
 mix que.setup # If you are using persistence option for que job processing
 mix phx.server  # run the application.
+OR
+iex -S mix phx.server # run the application in iex
 ```
 
 This is a backend project, you won't be able to go to localhost:4000 and see an aplication. 
