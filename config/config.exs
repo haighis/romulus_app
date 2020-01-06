@@ -6,25 +6,26 @@
 use Mix.Config
 
 # General application configuration
-config :real_world, ecto_repos: [RealWorld.Repo]
+config :romulus_app, ecto_repos: [Forms.Repo2]
+config :romulus, :ecto_repos, [Romulus.Repo]
 
-config :real_world, ecto_repos: [Forms.Repo2]
+# config :toniq, redis_url: "redis://localhost:6379/0"
+# todo if we want to recover jobs on restart enable below line
+# config :mnesia, dir: 'mnesia/#{Mix.env}/#{node()}'
 
-config :cards, ecto_repos: [Cards.Repo]
-
-
-#config :real_world, ecto_repos: [RealWorld.Repo2]
-
-#config :john, ecto_repos: [Forms.Repo]
+# config :romulus_app, MyApp.Endpoint,
+#   pubsub: [adapter: Phoenix.PubSub.PG2,
+#            pool_size: 1,
+#            name: MyApp.PubSub]
 
 # Configures the endpoint
-config :real_world, RealWorldWeb.Endpoint,
+config :romulus_app, RomulusWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "9ueg5YcX8/LKzVUcDrXp5xpYuaBCUfZZAJ3/udC1LCoabotR3O1CJyf/u/6RLJ/N",
-  render_errors: [view: RealWorldWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: RealWorld.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: RomulusWeb.ErrorView, accepts: ~w(json)],
+  pubsub: [name: RomulusApp.PubSub, adapter: Phoenix.PubSub.PG2]
 
-# config :real_world, :phoenix_swagger,
+# config :romulus_app, :phoenix_swagger,
 #   swagger_files: %{
 #     "priv/static/swagger.json" => [
 #       router: MyAppWeb.Router,     # phoenix routes will be converted to swagger paths
@@ -37,8 +38,8 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :real_world, RealWorldWeb.Guardian,
-  issuer: "RealWorld",
+config :romulus_app, RomulusWeb.Guardian,
+  issuer: "RomulusApp",
   secret_key: "MDLMflIpKod5YCnkdiY7C4E3ki2rgcAAMwfBl0+vyC5uqJNgoibfQmAh7J3uZWVK",
   # optional
   allowed_algos: ["HS256"],

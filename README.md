@@ -1,16 +1,6 @@
-# ![RealWorld Example App](logo.png)
+# Romulus App
 
-add prometheus. see master elixir chp
-
-> Elixir (Phoenix) codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.  
-
-[![CircleCI](https://circleci.com/gh/gothinkster/elixir-phoenix-realworld-example-app.svg?style=svg)](https://circleci.com/gh/gothinkster/elixir-phoenix-realworld-example-app) [![codecov](https://codecov.io/gh/gothinkster/elixir-phoenix-realworld-example-app/branch/master/graph/badge.svg)](https://codecov.io/gh/gothinkster/elixir-phoenix-realworld-example-app)
-
-This codebase was created to demonstrate a fully fledged backend application built with **Elixir and Phoenix** including CRUD operations, authentication, routing, pagination, and more.
-
-We've gone to great lengths to adhere to the **[credo](https://github.com/rrrene/credo)** community styleguides & best practices.
-
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+Romulus App that provides account registration feature for Romulus Mesagging Application.
 
 ## Installing / Getting started
 
@@ -27,12 +17,13 @@ cp config/dev.exs.example config/dev.exs  # creates the project's configuration 
 mix deps.get  # installs the dependencies
 mix ecto.create  # creates the database.
 mix ecto.migrate  # run the database migrations.
+mix que.setup # If you are using persistence option for que job processing
 mix phx.server  # run the application.
 ```
 
 This is a backend project, you won't be able to go to localhost:4000 and see an aplication. 
 
-In order to see the [Conduit](https://demo.realworld.io/#/) frontend you will need to download and setup one of the [frontend projects](https://demo.realworld.io/#/) and set it up to consume this apps api. Typically this can be done by finding the `API_URL` and setting it to `localhost:4000`.
+In order to see the [Romulus UI](todo) frontend you will need to download and setup.
 
 ## Tests
 
@@ -58,7 +49,7 @@ https://hexdocs.pm/ecto/Ecto.html
 
 ### Stop postgresql
 
- brew services stop postgresql
+brew services stop postgresql
 
 ### Start postgresql in docker
 
@@ -70,15 +61,19 @@ https://markheath.net/post/exploring-postgresql-with-docker
 
 ### Working with a repo
 
-mix ecto.create -r Cards.Repo
+mix ecto.create -r Todos.Repo
 
-mix ecto.migrate -r Cards.Repo
+mix ecto.migrate -r Todos.Repo
 
-mix ecto.drop -r Cards.Repo
+mix ecto.drop -r Todos.Repo
 
 Insert some sample data before write our api resource
 
-Cards.Repo.insert!(%Cards.Schemas.Card{label: "Hello1"})
+Romulus.Repo.insert!(%Romulus.Todo{item: "Hello1"}) 
+
+Add a new column to todo table with an ecto migration
+
+Romulus.Repo.insert!(%Romulus.Todo{item: "Hello1", title: "test"}) 
 
 Seeding data
 

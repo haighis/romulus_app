@@ -1,4 +1,4 @@
-defmodule RealWorldWeb.ChannelCase do
+defmodule RomulusWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule RealWorldWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint RealWorldWeb.Endpoint
+      @endpoint RomulusWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RealWorld.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Romulus.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(RealWorld.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Romulus.Repo, {:shared, self()})
     end
 
     :ok

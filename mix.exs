@@ -1,9 +1,9 @@
-defmodule RealWorld.Mixfile do
+defmodule RomulusApp.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :real_world,
+      app: :romulus_app,
       version: "1.0.0",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -14,9 +14,9 @@ defmodule RealWorld.Mixfile do
       test_coverage: [tool: ExCoveralls],
 
       # Docs
-      name: "RealWorld",
-      source_url: "https://github.com/gothinkster/elixir-phoenix-realworld-example-app",
-      homepage_url: "https://github.com/gothinkster/elixir-phoenix-realworld-example-app",
+      name: "RomulusApp",
+      source_url: "https://github.com/haighis/romulus_app",
+      homepage_url: "https://github.com/haighis/romulus_app",
       # The main page in the docs
       docs: [main: "README", extras: ["README.md"]]
     ]
@@ -26,7 +26,7 @@ defmodule RealWorld.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {RealWorld.Application, []}, extra_applications: [:logger, :runtime_tools, :comeonin, :cards]]
+    [mod: {RomulusApp.Application, []}, extra_applications: [:logger, :runtime_tools, :comeonin, :romulus, :que, :httpoison]] # :toniq, :phoenix_pubsub
   end
 
   # Specifies which paths to compile per environment.
@@ -55,9 +55,11 @@ defmodule RealWorld.Mixfile do
       {:ex_machina, "~> 2.0", only: :test},
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
       {:plug, "~> 1.0"},
-      #{:cards, "~> 0.0.1"}, Hex
-      #{:cards, git: "https://github.com/nubunto/ecto_repo_test.git", branch: "master"},  Github
-      {:cards, path: "../cards"}, # Local path
+      {:romulus, path: "../romulus_repo"}, # Local path
+    #  {:toniq, "~> 1.2"},
+      {:que, "~> 0.10.1"},
+      {:poison, "~> 3.1"},
+      {:httpoison, "~> 1.6"},
       {:corsica, "~> 1.0"} #,
       #{:phoenix_swagger, "~> 0.8"}
     ]
