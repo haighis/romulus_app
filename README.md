@@ -25,7 +25,7 @@ iex -S mix phx.server # run the application in iex
 
 This is a backend project, you won't be able to go to localhost:4000 and see an aplication. 
 
-In order to see the [Romulus UI](todo) frontend you will need to download and setup.
+In order to see the [Romulus UI](romulus_ui) frontend you will need to download and setup.
 
 ## Tests
 
