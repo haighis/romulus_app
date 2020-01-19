@@ -1,6 +1,6 @@
-# Romulus App
+# Forms Core App
 
-Romulus App that provides account registration feature for Romulus Mesagging Application.
+Based on existing work for a REST API called Romulus. See github.com/haighis/romulus_app Romulus App that provides account registration feature for Romulus Mesagging Application. Romulus Mesagging Application is a Slack/Whatsapp application that can handle 5 million simultaneous users.
 
 ## Installing / Getting started
 
@@ -13,11 +13,8 @@ To run this project, you will need to install the following dependencies on your
 To get started, run the following commands in your project folder:
 
 ```shell
-cp config/dev.exs.example config/dev.exs  # creates the project's configuration file
+You need the forms core database. Talk to a member of the forms team for this.
 mix deps.get  # installs the dependencies
-mix ecto.create  # creates the database.
-mix ecto.migrate  # run the database migrations.
-mix que.setup # If you are using persistence option for que job processing
 mix phx.server  # run the application.
 OR
 iex -S mix phx.server # run the application in iex
@@ -25,15 +22,7 @@ iex -S mix phx.server # run the application in iex
 
 This is a backend project, you won't be able to go to localhost:4000 and see an aplication. 
 
-In order to see the [Romulus UI](todo) frontend you will need to download and setup.
-
-## Tests
-
-To run the tests for this project, simply run in your terminal:
-
-```shell
-mix test
-```
+You can use postman and make a GET request to http://localhost:4000/datasources with a request header that has parameter business with value 1111
 
 ## Documentation
 
@@ -61,13 +50,6 @@ docker run --name some-postgres -p 5432:5432 -v postgres-data:/var/lib/postgresq
 
 https://markheath.net/post/exploring-postgresql-with-docker
 
-### Working with a repo
-
-mix ecto.create -r Todos.Repo
-
-mix ecto.migrate -r Todos.Repo
-
-mix ecto.drop -r Todos.Repo
 
 Insert some sample data before write our api resource
 
@@ -80,3 +62,8 @@ Romulus.Repo.insert!(%Romulus.Todo{item: "Hello1", title: "test"})
 Seeding data
 
 https://www.phoenixframework.org/blog/seeding-data
+
+## Deployment
+
+exrm - todo research this
+Dockerize and deploy to alpha environment
