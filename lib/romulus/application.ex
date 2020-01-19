@@ -10,10 +10,7 @@ defmodule RomulusApp.Application do
     # Define workers and child supervisors to be supervised
     children = [
       #supervisor(Phoenix.PubSub.PG2, [:pubsub_spike, []]), Correct syntax
-      # supervisor(RealWorld.Repo, []),
-      supervisor(Romulus.Repo,[]),
-      supervisor(Forms.Repo2, []),
-
+    
       # Start the endpoint when the application starts
       supervisor(RomulusWeb.Endpoint, [])
     ]

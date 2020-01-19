@@ -30,9 +30,7 @@ defmodule RomulusWeb.Router do
     # post("/articles/:slug/favorite", ArticleController, :favorite)
     # delete("/articles/:slug/favorite", ArticleController, :unfavorite)
 
-    #get("/datasources",DatasourceController, :index)
-    resources "/datasources", DatasourceController
-    # get("/formdefinitions",FormController, :index)
+    # get("/datasources",DatasourceController, :index)
 
     # get("/tags", TagController, :index)
     get("/user", UserController, :current_user)
